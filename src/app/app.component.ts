@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Reveal from 'reveal.js';
-import RevealHighlight from 'reveal.js/plugin/highlight/highlight.js';
+import * as hljs from 'highlight.js';
+import vba from 'highlightjs-vba';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import RevealHighlight from 'reveal.js/plugin/highlight/highlight.js';
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-    Reveal.initialize({
-      plugins: [ RevealHighlight ]
-    } );
+    hljs.registerLanguage('vba', vba);
+    hljs.highlightAll();
+    Reveal.initialize();
   }
 }
